@@ -442,7 +442,8 @@ for(i in 7:ncol(plink.file)){
 plink.file$B <- gsub("-", "A", plink.file$B)
 plink.file$B <- gsub("AGGAA", "T", plink.file$B)
 
-plink.file[is.na(plink.file)] <- "0 0"
+plink.file[is.na(plink.file)] <- "0"
+plink.file[plink.file == "00 00"] <- "0 0"
 
 write.table(plink.file, "output/KASP.ped", col.names  = F, row.names = F, quote = F)
 
